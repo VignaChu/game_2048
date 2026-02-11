@@ -1,0 +1,52 @@
+name: game_2048
+description: "Vigna 2048 - A jelly-style puzzle game with music and multi-language support."
+# 防止意外发布到 pub.dev
+publish_to: 'none'
+
+# 版本号：1.0.0 是版本名，+1 是内部构建号（对应 Android 的 versionCode）
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.8
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  
+  # 持久化存储：用于保存最高分、音量设置和语言偏好
+  shared_preferences: ^2.5.4
+  
+  # 国际化支持：用于切换中英文界面
+  flutter_localizations:
+    sdk: flutter
+  
+  # --- 修复点：升级 intl 版本以匹配 SDK 限制 ---
+  intl: ^0.20.2 
+  
+  # 音频播放：用于背景音乐和合成音效
+  audioplayers: ^6.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  
+  # 自动生成图标工具
+  flutter_launcher_icons: ^0.13.1
+
+# --- 图标生成配置 ---
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon.png" # 请确保 assets 目录下有这张图片
+  min_sdk_android: 21
+
+flutter:
+  # 启用 Material Design 风格组件
+  uses-material-design: true
+
+  # 注册资源文件
+  assets:
+    - assets/icon.png
+    - assets/audio/  # 必须以 / 结尾，代表包含目录下所有音频文件
